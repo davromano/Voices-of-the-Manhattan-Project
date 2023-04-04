@@ -20,7 +20,8 @@ def page_scraper(url):
     # Find the interviewee name
     name_tag = soup.find('h1', {'class': 'wp-block-post-title'})
     name_temp = name_tag.text.strip()
-    name = re.sub(r"’s Interview$", "", name_temp)
+    #name = re.sub(r"’s Interview$", "", name_temp)
+    name=name_temp.split("’s Interview")[0]
     
     #this is an auxiliary function because in some pages location is missing, so we have to manage this exception
     divs_1 = soup.find_all('div', {'class': 'inline-comma-separated-list mb-10 mt-10 nm-cdt-field'})
@@ -36,6 +37,8 @@ def page_scraper(url):
         content_tag = manhattan_locations_div.find('div', {'class': 'content'})
         locations_list = content_tag.find('ul')
         locations = [li.text.strip() for li in locations_list.find_all('li')]
+        for i in range(0,len(locations)):
+            locations[i]=locations[i].split(",")[0]
     else:
         locations=[]
 

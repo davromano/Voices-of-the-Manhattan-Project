@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import re
 from page_scraper import page_scraper
+import pandas as pd
 
 def main():
     main_url = 'https://ahf.nuclearmuseum.org/voices/oral-histories/'
@@ -26,6 +27,15 @@ def main():
             result = page_scraper(url)
             results.append(result)
         print(page)
+
+    # Convert the list of dictionaries into a DataFrame
+    results_df = pd.DataFrame(results)
+
+    # Set the interviewee names as the index
+    results_df.set_index('name', inplace=True)
+
+    # Export the DataFrame to a CSV file
+    results_df.to_csv('results.csv')
 
 if __name__ == "__main__":
     main()

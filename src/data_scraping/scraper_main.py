@@ -35,7 +35,7 @@ def main():
     results_df.set_index('name', inplace=True)
 
     # Export the DataFrame to a CSV file
-    results_df.to_csv('../../scraped_data.csv')
+    results_df.to_csv('../../data/scraped_data_no_names.csv')
 
 if __name__ == "__main__":
     main()

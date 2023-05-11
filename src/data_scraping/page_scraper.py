@@ -4,7 +4,6 @@ import requests
 import re
 
 def page_scraper(url):
-
     # Send a GET request to the URL and get the response
     response = requests.get(url)
 
@@ -13,9 +12,26 @@ def page_scraper(url):
 
     # Find the div element with the class name "is-layout-constrained entry-content wp-block-post-content"
     div_element = soup.find('div', {'class': 'is-layout-constrained entry-content wp-block-post-content'})
-    transcript=div_element.text
-    transcript = transcript.replace('\xa0', ' ')
-    transcript = transcript.replace('\n', ' ')
+
+    # Find all paragraph elements within the div element
+    paragraphs = div_element.find_all('p')
+
+    # Process each paragraph
+    transcript = ""
+    for paragraph in paragraphs:
+        # Remove the content inside <strong> tags
+        strong_tags = paragraph.find_all('strong')
+        for tag in strong_tags:
+            tag.extract()
+
+        # Get the text of the modified paragraph
+        paragraph_text = paragraph.get_text(strip=True)
+
+        # Append the modified paragraph to the transcript
+        transcript += paragraph_text + " "
+
+    # Remove any unwanted whitespace
+    transcript = transcript.strip()
     
     # Find the interviewee name
     name_tag = soup.find('h1', {'class': 'wp-block-post-title'})
@@ -129,4 +145,3 @@ def page_scraper(url):
         "subjects": subjects,
         "tags": tags
     }
-

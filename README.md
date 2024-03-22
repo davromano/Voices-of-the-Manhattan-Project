@@ -6,7 +6,7 @@ Our project is an attempt to use computational tools to explore the memories con
 Learn more by reading our [report](/voices-of-the-manhattan-project-report.pdf)!
 
 ## Content
-- `/data` folder contains the [dataset](/data/scraped_data.csv) scraped from [Voices of the Manhattan Project](https://ahf.nuclearmuseum.org/voices/) and other processed datasets.
+- `/data` folder contains the [dataset](data/scraped_data/scraped_data.csv) scraped from [Voices of the Manhattan Project](https://ahf.nuclearmuseum.org/voices/) and other processed datasets.
 - `/src` folder contains the source codes for data scraping, data formatting and data analysis.
 - `/results` folder contains the results of our analysis.
 - The [report](/voices-of-the-manhattan-project-report.pdf).

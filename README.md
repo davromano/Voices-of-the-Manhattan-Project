@@ -15,8 +15,6 @@ Learn more by reading our [report](/voices-of-the-manhattan-project-report.pdf)!
 ## Credits
 Authors: Davide Romano - Cindy Tang - Junzhe Tang
 
-Professor: Jérôme Baudry
-
 Course: DH-412 History and the digital, EPFL
 
 Dates: 03.2023 - 06.2023
